@@ -15,7 +15,7 @@ def predict():
     float_features = [float(x) for x in request.form.values()]
     features = [np.array(float_features)]
     prediction= model.predict(features)
-    return render_template("index.html", prediction_text = "The MR present in zeolite is {}".format(prediction))
+    return render_template("index.html", prediction_text = "The predicted value of Soil available Cd is {} (mg/kg)".format(prediction))
 
 
 

@@ -3,34 +3,34 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "{{url_for('static',filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
   <title>ML API</title>
 </head>
 
-
 <body>
-  <div class="login">
-   <h1>Prediction</h1>
- 
+  <div class="container">
+    <h1>Soil available Cd Prediction</h1>
     
-     <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="Soil pH" placeholder="Soil pH" required="required" />
-      <input type="text" name="Soil OM (mg/kg)" placeholder="Soil OM (mg/kg)" required="required" />
-      <input type="text" name="Soil total Cd (mg/kg)	" placeholder="Soil total Cd (mg/kg)	" required="required" />
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="form-group">
+        <label for="soil-pH">Soil pH</label>
+        <input type="text" id="soil-pH" name="Soil pH" placeholder="Soil pH" required="required" />
+      </div>
+      <div class="form-group">
+        <label for="soil-om">Soil OM (mg/kg)</label>
+        <input type="text" id="soil-om" name="Soil OM (mg/kg)" placeholder="Soil OM (mg/kg)" required="required" />
+      </div>
+      <div class="form-group">
+        <label for="soil-cd">Soil total Cd (mg/kg)</label>
+        <input type="text" id="soil-cd" name="Soil total Cd (mg/kg)" placeholder="Soil total Cd (mg/kg)" required="required" />
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Predict</button>
+    </form>
     
- 
-      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-     </form>
- 
     <br>
-    <br>
-    {{ prediction_text }}
- 
+    <p id="prediction-result">{{ prediction_text }}</p>
+    <p id="footnote-1">[1] Disregarded variations in experimental methods for obtaining soil available Cd concentration, as they are relatively consistent.</p>
   </div>
- <p id="footnote-1">[1] T=Si+Ge</p>
- <p id="footnote-2">[2] time=crystallization time in hour</p>
- <p id="footnote-3">[3] AR - if OSDA contains an aromatic ring, then assign 1; else assign zero</p>
- <p id="footnote-1">[4] Area-Connolly molecular area of OSDA calculated from Chem3D</p>
- <p id="footnote-1">[5] Prediction- If MR present in zeolite: [1]- Extra-large pore zeolite, [0] - small or medium or large pore zeolite   </p>
- </body>
- </html>
+</body>
+</html>
